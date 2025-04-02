@@ -27,7 +27,8 @@ fun menu (){
             "2. Cadastrar Hospedes\n" +
             "3. Registrar Eventos\n" +
             "4. Abastecimento de Automoveis\n" +
-            "5. Sair do Hotel\n" +
+            "5. Empresas Ar\n" +
+            "6. Sair do Hotel\n" +
             "Escolha uma das opções a cima: ")
 
                 val escolha = readln().toIntOrNull()
@@ -36,7 +37,8 @@ fun menu (){
                     2 -> fichaHospede()
                     3 -> registrarEventos()
                     4 -> abastecimentoDeAutomoveis()
-                    5 -> sairDoHotel()
+                    5 -> empresasAR()
+                    6 -> sairDoHotel()
                     else -> erro()
                 }
 }
@@ -44,32 +46,32 @@ fun menu (){
 
 fun abastecimentoDeAutomoveis() {
     val tanque = 42
-    var alcool = 30.0
-    var gasolina = 0.0
 
     println("Qual o valor do álcool no posto Miau Oil?")
-        alcool = readln().toDouble()
+       val alcool = readln().toDouble()
     println("Qual o valor da gasolina no posto Miau Oil?")
-        gasolina = readln().toDouble()
+       val gasolina = readln().toDouble()
+
     println("Qual o valor do alcool no posto Sucka Oil?")
         val alcool2 = readln().toDouble()
     println("Qual o valor da gasolina no posto Sucka Oil?")
         val gasolina2 = readln().toDouble()
 
-        //determinando o mais barato
-        val melhoralcool = if(alcool < gasolina * 0.7){
-            print("$nomeusuario, ")
-        } else {
-            "Sucka Oil"
-        }
-        val melhorGasolina = if(alcool2 < gasolina2 * 0.7){
-            "Miau Oil"
-        } else{
-            "Sucka Oil"
-        }
+                                 //determinando o mais barato
+                     //posto 1
+            if(alcool < gasolina * 0.7){
+                print("$nomeusuario, é mais barato abastecer com alcool no posto Miau Oil!\n")}
 
+                else if (alcool > gasolina * 0.7){
+                print("$nomeusuario, é mais barato abastecer com gasolina no posto Sucka Oil!\n")}
 
+                    //posto 2
+                else if (alcool2 < gasolina2 * 0.7){
+                    print("$nomeusuario, é mais barato abastecer com alcool no posto Sucka Oil!\n")}
 
+                 else if (alcool2 > gasolina2 * 0.7){
+                    print("$nomeusuario, é mais barato abastecer com gasolina no posto Miau Oil!\n")
+                }
 }
 
 fun sairDoHotel() {

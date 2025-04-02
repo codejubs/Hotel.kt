@@ -1,32 +1,31 @@
 package Hotel
-//arrumar a questao do quarto ocupado
+val quartos = BooleanArray(20) { false } //inicializando com os quartos disponiveis.
 fun cadastrarQuartos() {
-    val quartos = BooleanArray(20) { false } //inicializando com os quartos disponiveis.
-
     while (true) {
         print("\nFaça sua reserva!\n" +
                 "---> Informe o nome completo do hóspede: ")
-        val hospede = readln()
 
-        var numeroquarto: Int
-        while (true) {
+            val hospede = readln()
+
             print("---> Informe o número do quarto de 1 a 20: ")
-            numeroquarto = readln().toInt()
+            val numeroquarto = readln().toInt()
+
             // Verifica se o número do quarto é válido
             if (numeroquarto < 1 || numeroquarto > 20) {
                 print("Informe um quarto válido!\n")}
 
             // Se o quarto já estiver ocupado
-                else if (quartos[numeroquarto - 1]) {
-                print("Esse quarto já está ocupado. Escolha outro\n")}
+                if (quartos[numeroquarto - 1] == true) {
+                print("Esse quarto já está ocupado. Escolha outro\n")
+                    cadastrarQuartos()
+                }
 
                 else {
                     // Se o quarto estiver livre, ocupamos ele
                     print("Quarto livre.\n")
                     quartos[numeroquarto - 1] = true
-                    break // Sai do loop se o quarto foi reservado
                 }
-        }
+
 
         //a fun valida a entrada do usuario, o armazenando nas variaveis.
         val valodiarias = valordiaria()
@@ -34,7 +33,7 @@ fun cadastrarQuartos() {
 
         //confimação
         val total = (valodiarias * diadiarias)
-        println("$nomeusuario, você confirma a hospedagem para $hospede por $diadiarias para o $numeroquarto por R$$total?")
+        println("$nomeusuario, você confirma a hospedagem para $hospede por $diadiarias dias no $numeroquarto por R$$total?")
             val simnao = readln()
 
                 if(simnao.equals("sim",ignoreCase = true)){
